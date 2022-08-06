@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html>
+    
+<title>final year project</title>
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+<script src="/javapro.js"></script>
+
+
+
+</head>
+
+
+
+<body>
+
+    
+        <style>
+            /* Google Fonts Import Link */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap');
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    .sidebar{
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 260px;
+      background: #11101d;
+      z-index: 100;
+      transition: all 0.5s ease;
+    }
+    .sidebar.close{
+      width: 78px;
+    }
+    .sidebar .logo-details{
+      height: 60px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+    .sidebar .logo-details i{
+      font-size: 30px;
+      color: #fff;
+      height: 50px;
+      min-width: 78px;
+      text-align: center;
+      line-height: 50px;
+    }
+    .sidebar .logo-details .logo_name{
+      font-size: 22px;
+      color: #fff;
+      font-weight: 600;
+      transition: 0.3s ease;
+      transition-delay: 0.1s;
+    }
+    .sidebar.close .logo-details .logo_name{
+      transition-delay: 0s;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .sidebar .nav-links{
+      height: 100%;
+      padding: 30px 0 150px 0;
+      overflow: auto;
+    }
+    .sidebar.close .nav-links{
+      overflow: visible;
+    }
+    .sidebar .nav-links::-webkit-scrollbar{
+      display: none;
+    }
+    .sidebar .nav-links li{
+      position: relative;
+      list-style: none;
+      transition: all 0.4s ease;
+    }
+    .sidebar .nav-links li:hover{
+      background: #1d1b31;
+    }
+    .sidebar .nav-links li .iocn-link{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .sidebar.close .nav-links li .iocn-link{
+      display: block
+    }
+    .sidebar .nav-links li i{
+      height: 50px;
+      min-width: 78px;
+      text-align: center;
+      line-height: 50px;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .sidebar .nav-links li.showMenu i.arrow{
+      transform: rotate(-180deg);
+    }
+    .sidebar.close .nav-links i.arrow{
+      display: none;
+    }
+    .sidebar .nav-links li a{
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .sidebar .nav-links li a .link_name{
+      font-size: 18px;
+      font-weight: 400;
+      color: #fff;
+      transition: all 0.4s ease;
+    }
+    .sidebar.close .nav-links li a .link_name{
+      opacity: 0;
+      pointer-events: none;
+    }
+    .sidebar .nav-links li .sub-menu{
+      padding: 6px 6px 14px 80px;
+      margin-top: -10px;
+      background: #1d1b31;
+      display: none;
+    }
+    .sidebar .nav-links li.showMenu .sub-menu{
+      display: block;
+    }
+    .sidebar .nav-links li .sub-menu a{
+      color: #fff;
+      font-size: 15px;
+      padding: 5px 0;
+      white-space: nowrap;
+      opacity: 0.6;
+      transition: all 0.3s ease;
+    }
+    .sidebar .nav-links li .sub-menu a:hover{
+      opacity: 1;
+    }
+    .sidebar.close .nav-links li .sub-menu{
+      position: absolute;
+      left: 100%;
+      top: -10px;
+      margin-top: 0;
+      padding: 10px 20px;
+      border-radius: 0 6px 6px 0;
+      opacity: 0;
+      display: block;
+      pointer-events: none;
+      transition: 0s;
+    }
+    .sidebar.close .nav-links li:hover .sub-menu{
+      top: 0;
+      opacity: 1;
+      pointer-events: auto;
+      transition: all 0.4s ease;
+    }
+    .sidebar .nav-links li .sub-menu .link_name{
+      display: none;
+    }
+    .sidebar.close .nav-links li .sub-menu .link_name{
+      font-size: 18px;
+      opacity: 1;
+      display: block;
+    }
+    .sidebar .nav-links li .sub-menu.blank{
+      opacity: 1;
+      pointer-events: auto;
+      padding: 3px 20px 6px 16px;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .sidebar .nav-links li:hover .sub-menu.blank{
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .sidebar .profile-details{
+      position: fixed;
+      bottom: 0;
+      width: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #1d1b31;
+      padding: 12px 0;
+      transition: all 0.5s ease;
+    }
+    .sidebar.close .profile-details{
+      background: none;
+    }
+    .sidebar.close .profile-details{
+      width: 78px;
+    }
+    .sidebar .profile-details .profile-content{
+      display: flex;
+      align-items: center;
+    }
+    .sidebar .profile-details img{
+      height: 52px;
+      width: 52px;
+      object-fit: cover;
+      border-radius: 16px;
+      margin: 0 14px 0 12px;
+      background: #1d1b31;
+      transition: all 0.5s ease;
+    }
+    .sidebar.close .profile-details img{
+      padding: 10px;
+    }
+    .sidebar .profile-details .profile_name,
+    .sidebar .profile-details .job{
+      color: #fff;
+      font-size: 18px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .sidebar.close .profile-details i,
+    .sidebar.close .profile-details .profile_name,
+    .sidebar.close .profile-details .job{
+      display: none;
+    }
+    .sidebar .profile-details .job{
+      font-size: 12px;
+    }
+    .home-section{
+      position: relative;
+      background: #0d121f;
+      height: 75px;
+      left: 260px;
+      margin-bottom: 10px;
+      width: calc(100% - 260px);
+      transition: all 0.5s ease;
+    }
+    .sidebar.close ~ .home-section{
+      left: 78px;
+      width: calc(100% - 78px);
+    }
+    .home-section .home-content{
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+    .home-section .home-content .bx-menu,
+    .home-section .home-content .text{
+      color: #ffffff;
+      font-size: 35px;
+    }
+    .home-section .home-content .bx-menu{
+      margin: 0 15px;
+      cursor: pointer;
+    }
+    .home-section .home-content .text{
+      font-size: 26px;
+      font-weight: 600;
+    }
+    .navbar_id{
+      display: unset;
+    }
+    
+    @media (max-width: 420px) {
+      .sidebar.close .nav-links li .sub-menu{
+        display: none;
+      }
+    }
+    
+        </style>
+        <div id="navbar_id">
+      <div class="sidebar close">
+        <div class="logo-details">
+         
+            <img  style="width: 40px; height: 40px; margin:0px 10px 0px 10px;" src="./img/Group 1771.png ">
+
+          
+          <span class="logo_name">SWAIAM -3</span>
+        </div>
+        <ul class="nav-links">
+          <li>
+            <a onclick=" Dashboard_page()">
+              <i class="bx bx-grid-alt"></i>
+              <span class="link_name">Dashboard</span>
+            </a>
+            <ul class="sub-menu blank">
+              <li><a  class="link_name"onclick=" Dashboard_page()">Dashboard</a></li>
+            </ul>
+          </li>
+          <li class="">
+            <div class="iocn-link">
+              <a href="#">
+                <i class="bx bx-pie-chart-alt-2"></i>
+                <span class="link_name">Category</span>
+              </a>
+              <i class="bx bxs-chevron-down arrow"></i>
+            </div>
+            <ul class="sub-menu">
+              <li><a class="link_name" href="#">Category</a></li>
+              <li><a onclick=" Electric_page()">Electric</a></li>
+              <li><a onclick="Gas_page()">Gas</a></li>
+              <li><a onclick=" Water_page()">Water</a></li>
+            </ul>
+          </li>
+        
+          <li>
+            <a href="#">
+              <i class="bx bx-cog"></i>
+              <span class="link_name">Setting</span>
+            </a>
+            <ul class="sub-menu blank">
+              <li><a class="link_name" href="#">Setting</a></li>
+            </ul>
+          </li>
+          <li>
+        <div class="profile-details">
+          <div class="profile-content">
+            <!--<img src="image/profile.jpg" alt="profileImg">-->
+          </div>
+          <div class="name-job">
+            <div class="profile_name"></div>
+            <div class="job"></div>
+          </div>
+          <div   onclick="signOut()">
+          
+            <i class="bx bx-log-out"></i>
+    
+        </div>
+
+         
+        </div>
+      </li>
+    </ul>
+      </div>
+      <section class="home-section">
+        <div class="home-content">
+          <i class="bx bx-menu"></i>
+          <span class="text"></span>
+        </div>
+      </section>
+    </div>
+      <script>
+      let arrow = document.querySelectorAll(".arrow");
+      for (var i = 0; i < arrow.length; i++) {
+        arrow[i].addEventListener("click", (e)=>{
+       let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+       arrowParent.classList.toggle("showMenu");
+        });
+      }
+      let sidebar = document.querySelector(".sidebar");
+      let sidebarBtn = document.querySelector(".bx-menu");
+      console.log(sidebarBtn);
+      sidebarBtn.addEventListener("click", ()=>{
+        sidebar.classList.toggle("close");
+      });
+      </script>
+    
+   
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="body_top">
+
+<!-- ---------------------------------------------------- ----------------------     Login page   --------------------------------------------------------------------------- -->
+
+<div id="Login_page">
+  <style>
+    .bar_button{
+      width: 100%;
+      margin: auto;
+      display:flex;
+      height: 50px;
+      background-color: #26E2B3;
+      color: #ffffff;
+      text-align: center;
+    }
+    .bar_button h6{
+      margin: auto;
+      color: #ffffff;
+      font-size: 18px;
+      text-align: center;
+    }
+    .bar_button button{
+      width: fit-content;
+      height: auto;
+      background-color: #1d1b31;
+      color: #26E2B3;
+      margin: auto;
+      padding: 5px 20px 5px 20px;
+      border-radius: 25px;
+
+    }
+  </style>
+  <div class="bar_button">
+   <h6>SWAIAM 3-Smart Wireless And Iot Automatic Meter 3 </h6> 
+  
+    <button onclick="main_id()">
+      Login
+    </button>
+
+  </div>
+  <style>
+    #main_id{
+      display:none;
+    }
+  </style>
+  <script>
+    function main_id(){
+    document.getElementById("main_id").style.display = "unset";
+  
+    
+  } 
+  </script>
+  <div id="main_id">
+  <div class="login_page">
+      <div class="lg_top">
+          <img src="./img/undraw_secure_login_pdn4 (1).svg">
+  
+      </div>
+      <div class="lg_input">
+          <input type="email" placeholder="Email here" id="email"><br>
+          <input type="password" placeholder="Password here" id="password"><br>
+          <!-- <button onclick="signUp()" id="signUp">SignUp</button> -->
+          <!-- <button onclick="signIn()" id="signIp">SignIn</button> -->
+          <!-- <button onclick="signOut()" id="signOut">SignOut</button> -->
+  </div>
+  
+  <div style="display: flex; width: 50%;margin: auto;">
+      <div class="lg_bntlg"  onclick="signIn()">
+          Login                                                                                                                        
+  
+      </div>
+      <h6>or</h6>
+ 
+      <div class="lg_bntlg"  onclick="signIn()">
+        Google
+      </div>
+    </div>
+    <br>
+
+      <div class="lg_bntlg"  onclick="SignUp_page()">
+        Create Account
+
+    </div>
+
+  </div>
+  </div>
+  <style>
+  
+    p{
+      color: #fff;
+      font-size: larger;
+      text-align: justify;
+      padding: 15px 15px 15px 15px;
+      margin: auto;
+      width: 80%;
+      height: auto;
+      display: flex;
+    }
+   p img{
+    padding: 20px 20px 20px 20px;
+   }
+   h1{
+    font-size: 40px;
+    text-align: center;
+    color:#26E2B3  ;
+   }
+   h2{
+    font-size: 25px;
+    text-align: center;
+    color:#26E2B3  ;
+   }
+  </style>
+
+<div class="content_tes">
+  <br>
+  <br>
+
+  <h1>SWAIAM -3</h1>
+  <br>
+  <br><br>
+  <br>
+  <p>
+
+   
+  There is a high need of not only efficient generation and transmission of electricity but 
+the way it is being used and measured at the time of billing. The traditional meters, in
+which the pendulum rotates for a predefined times and it calculates the consumption of unit
+power in terms of Watts. 
+<br> The traditional meters are non-real time ones so calculation of bills is 
+slow in process. Now a day’s a computer operated meters are used but they are also non 
+real time system operated device.
+<br></br> There is no proper way to know the consumer's 
+maximum demand, usage details, losses in the lines, and power theft. A system is 
+considered to be intelligent when it can make the decisions and can work upon without
+any human interference. 
+
+<br>
+
+
+
+<img  src="./img/undraw_explore_re_8l4v.svg" width="500px" height="550px" >
+
+<br></p>
+<br>
+<br>
+<br><br>
+<br>
+<img style="margin: auto; display: flex;  width:80%; height:auto;" src="./img/Group 1776.png" >
+
+<br>
+<br>
+<br><br>
+<br>
+<p>
+  <img  src="./img/undraw_team_work_k-80-m.svg" width="500px" height="550px" >
+Reducing energy consumption and monitoring the units consumed. To make the 
+electrical apparatuses insightful and give solace to devoured and to lessen control 
+utilization in web applications. Suggested it in light of Arduino uno controller and IoT
+innovation. On the off chance that any altering happens, the controller will send to 
+information to the server and in addition, it is chopped down the vitality supply naturally.
+There is no proper way to know the consumer's maximum demand, usage details, losses
+in the lines, and power theft. A system is considered to be intelligent when it can make 
+the decisions and can work upon without any human interference.
+SWAIAM 3-Smart Wireless And Iot Automatic Meter 3 2021-22
+Dept. of ECE SKSVMACET,Lakshmeshwar<br>
+Similarly, the water meter and gas meter have their own disadvantages, and we can
+also integrate water and gas energy meters with electric meter helps users to track three
+different meters reading in one application and website.
+In order to avoid all these drawbacks, we have intended to construct an IOT based
+energy metersso that the proposed energy meter measures the amount of power consumed
+of all three-meter electric, water and gas which uploads it to the cloud from which the
+concerned person can view the reading.
+</p>
+<br>
+
+<br>
+<br><br>
+<br> <br><br>
+<h2>Working</h2>
+<br>
+<img style="margin: auto; display: flex;  width:80%; height:auto;" src="./img/Frame 5.png" >
+</div>
+
+<p>
+  In the project SWAIAM-3, we have implemented a smart energy meter which will collect 
+the meter readings of Electric, Water and Gas meter and provide billing facility to 
+consumer using Web application interface. Our main aim of the project was to reduce the 
+manpower and human errors. We have overcome this by implementing efficient sensors 
+like Reed switch and YF-S201 which will collect the meter readings. Our next aim was to 
+provide real-time data monitoring, which we have delivered by providing customers with 
+the Web/Application interface wherein they can monitor their daily, weekly and monthly 
+usages and pay their bills accordingly. We also aimed at integrating all the three services 
+and we have done this efficiently by using a single Node MCU 8266 module. During the 
+execution of this project, we have faced some problems related to usage of sensors and 
+microcontrollers. We researched about various and tried various sensors and 
+microcontrollers to implement this project. Since we have used Node MCU module with 
+ESP 8266, this project can be implemented only in buildings having Wi-Fi connection.
+</p>
+
+
+  </div>
+
+<!-- ---------------------------------------------------------------------------      Sign Up     -------------------------------------------------------------------------------------------------- -->
+<div  id="Sign_page">
+<div  class="Sign_page">
+  <div class="lg_top">
+      <img src="./img/undraw_mobile_user_-7-oqo.svg">
+
+  </div>
+  <div class="lg_input">
+      <input type="Text" placeholder="Full Name " id="UserName">
+ 
+      
+      <input type="Email" placeholder="email here" id="email"><br>
+      <input type="Password" placeholder="Password" id="password"><br>
+      <input type="Text" placeholder="Confirm Password">
+  
+     
+
+      <div class="lg_bntlg"  onclick="signUp()">
+          Sign up
+  
+      </div>
+
+  </div>
+</div>
+</div>
+    
+
+ <!-- ---------------------------------------------------------------------------     Dashboard     -------------------------------------------------------------------------------------------------- -->
+
+<div id="dashboard_page">
+ <div class="dashboard">
+
+                        <h4>
+                        Dashboard
+                        </h4>
+                <div class="DB_topMenu">
+
+                <div class="DB_element">
+                    <div class="element_name"> Today</div>
+                    <div class="element_value"> <div  id="date">
+                      </div>
+                    </p> 
+                      <script>
+                        n =  new Date();
+                                    y = n.getFullYear();
+                                    m = n.getMonth() + 1;
+                                    d = n.getDate();
+                                    document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
+                      </script>
+
+
+                    </div>
+
+                </div>
+
+
+                        <div class="DB_element">
+                            <div class="element_name"><br>
+                               pay the Bill on<br></div><br>
+                            <div class="element_value"> 09 DEC 
+                              <br>
+                            </div>
+
+                        </div>
+
+                        <div class="DB_element">
+                            <div class="element_name"> <br>Total Amount<br></div> <br>
+                            <div class="element_value"> 357 
+                              <label>₹ </label>
+                              <br>
+                            </div>
+
+                        </div>
+
+                        <div class="DB_element">
+                            <div class="element_name"><br><br> Increase
+                                by<br><br></div>
+                            <div class="element_value">33.93 <label>%</label>
+                              <br>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                   <div class="DB_Analy">
+                    <br><br>
+
+                       <canvas id="myChart"  ></canvas>
+                       <br><br>
+                       
+                       <script>
+                        var xValues = [100,200,300,400,500,600,700,800,900,1000];
+                        
+                        new Chart("myChart", {
+                          type: "line",
+                          data: {
+                            labels: xValues,
+                            datasets: [{ 
+                              data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
+                              borderColor: "rgb(0, 247, 255)",
+                              fill: false
+                            }]
+                          },
+                          options: {
+                            legend: {display: false}
+                          }
+                        });
+                        </script>
+
+                   </div>
+
+
+
+
+                   <div class="bottom_bars">
+                      <div >
+                    <div onclick="Electric_page()" class="service_list">
+                        <div class="sl_left" >
+                          <div  class="sl_left_img"> 
+                            <img src="./img/elec_Vector.png"  alt="">
+                          </div>
+                           
+                        </div>
+                        <div class="sl_mid">
+                            <div>
+                            <label>09 NOV </label><br>
+                            <br><br>
+                            <label>09 DEC </label>
+                            </div>
+                            <div class="sl_mid_name">
+                                 <h3>Electric</h3>  
+                            </div>
+                            
+                        </div>
+                        <div class="sl_right" >
+                            <h3 id="tt_data"> </h3>   ₹
+
+                        </div>
+                    </div>
+
+                    <div class="service_list" onclick="Water_page()" >
+                        <div class="sl_left" >
+                          <div  class="sl_left_img"> 
+                            <img src="./img/wat_Vector.png"  alt="">
+                            </div>
+                          </div>
+                           
+                        <div class="sl_mid">
+                            <div>
+
+                            
+                            <label>09 NOV </label><br>
+                            <br><br>
+                            <label>09 DEC </label>
+                        </div>
+                            <div class="sl_mid_name">
+                                 <h3>Water</h3>  
+                            </div>
+                            
+                        </div>
+                        <div class="sl_right" >
+                          <h3 id="wtt_data"> </h3>   ₹
+                        </div>
+                    </div>
+
+
+
+                    <div class="service_list"  onclick="Gas_page()">
+                        <div class="sl_left" >
+                          <div  class="sl_left_img"> 
+                            <img src="./img/gas_Vector.png"  alt="">
+                          </div>
+                           
+                        </div>
+                        <div class="sl_mid">
+                            <div>
+                               <label>09 NOV </label><br>
+                            <br><br>
+                            <label>09 DEC </label>
+                        </div>
+                            <div class="sl_mid_name">
+                                 <h3>Gas</h3>  
+                            </div>
+                            
+                        </div>
+                        <div class="sl_right" >
+                          <h3 id="gtt_data"> </h3>   ₹
+                        </div>
+                        
+                    </div>
+</div>
+</div>
+
+</div>
+
+
+</div>          
+<!-- ---------------------------------------------------------------------- ------- Elecrtic part-------------------------------------------------------------------------------------------------- -->
+<div id="Electric_page">
+<div class="dashboard">
+            
+                        <h4>
+                        Electric - Dashboard
+                        </h4>
+            
+            
+            
+
+                        <div class="DB_Analy">
+                     
+
+                          <canvas id="myChart1"  ></canvas>
+                          
+                          <script>
+                           var xValues = [100,200,300,400,500,600,700,800,900,1000];
+                           
+                           new Chart("myChart1", {
+                             type: "line",
+                             data: {
+                               labels: xValues,
+                               datasets: [{ 
+                                 data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
+                                 borderColor: "rgb(0, 247, 255)",
+                                 fill: false
+                               }]
+                             },
+                             options: {
+                               legend: {display: false}
+                             }
+                           });
+                           </script>
+   
+                      </div>
+            
+            
+                   <div class="DB_topMenu">
+            
+                    <div class="DB_element">
+                        <br>                        
+                        <div class="element_name"> Last Update on</div><br>
+                        <div class="element_value"> <div id="e_data"></div> <label>Unit per sec</label>
+                          
+                          <script>
+                             var total_bill5=10;
+                            var database = firebase.database()
+                            var user_ref =database.ref('user/')
+                            user_ref.on('value',function(snapshot){
+                              var data = snapshot.val()
+                              var unit =data.Electric_meter;
+                              document.getElementById("e_data").innerHTML =unit;
+                             
+                                    total_bill5= total_bill5 +(unit*2);
+                                    document.getElementById("t_data").innerHTML =total_bill5;
+                                    document.getElementById("tt_data").innerHTML =total_bill5;
+                            })
+                            </script>
+                
+                        </div>
+                        <br> <br>
+                    </div>
+                
+                
+                            <div class="DB_element">
+                                <br> 
+                               <a href="https://www.karnatakaone.gov.in/PortalHome/ServiceList"> <div class="element_name"> pay the Bill on</div><br></a> 
+                                <div class="element_value"> 09 DEC 
+                
+                                </div>
+                                <br> <br>
+                            </div>
+                
+                            </div><br> <br>
+                            <div class="DB_topMenu">
+                            <div class="DB_element">
+                                <br> 
+                                <div class="element_name"> Total Amount</div><br>
+                                <div class="element_value"><div id="t_data"></div><label>₹ </label>
+                                
+                
+                                </div>
+                                <br> <br>
+                            </div>
+                
+                            <div class="DB_element">
+                                <br> 
+                                <div class="element_name"> Increase
+                                    by</diV><br>
+                                <div class="element_value">33.93 <label>%</label>
+                
+                                </div>
+                                <br> <br>
+                            </div>
+                        
+                
+                        </div><br> <br>
+         
+            
+                   <div class="bottom_bars">
+                    <div class="service_list">
+                 
+             
+                  
+                    </div>
+                    <div style="margin: auto;">
+                      <a class="pay_btn" href="https://www.karnatakaone.gov.in/PortalHome/ServiceList" >
+                        Pay Now
+                    </a>
+                    </div>
+                    
+             </div>
+            </div>
+</div>
+<!-- ------------------------------------------------------------------------------ Water part --------------------------------------------------------------------------- -->
+<div id="Water_page">
+<div class="dashboard">
+    
+                <h4>
+                Water - Dashboard
+                </h4>
+    
+                <div class="DB_Analy">
+                     
+
+                  <canvas id="myChart2" ></canvas>
+                  
+                  <script>
+                   var xValues = [100,200,300,400,500,600,700,800,900,1000];
+                   
+                   new Chart("myChart2", {
+                     type: "line",
+                     data: {
+                       labels: xValues,
+                       datasets: [{ 
+                         data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
+                         borderColor: "rgb(0, 247, 255)",
+                         fill: false
+                       }]
+                     },
+                     options: {
+                       legend: {display: false}
+                     }
+                   });
+                   </script>
+
+              </div>
+    
+    
+           <div class="DB_topMenu">
+    
+            <div class="DB_element">
+                <br> <br>
+                <div class="element_name"> Last Update on</div>
+                <div class="element_value"> <div id="w_data"></div> <label>Unit per sec</label>
+                  <script>
+                    total_bill3=10;
+                    var database = firebase.database()
+                    var user_ref =database.ref('user/')
+                    user_ref.on('value',function(snapshot){
+                      var data1 = snapshot.val()
+                       var unit =data1.Water_meter;
+                      document.getElementById("w_data").innerHTML =unit;
+                      total_bill3= total_bill3 +(unit*4);
+                                    document.getElementById("wt_data").innerHTML =total_bill3 +"₹ ";
+                                    document.getElementById("wtt_data").innerHTML =total_bill3;
+                    })
+                    </script>
+        
+                </div>
+                <br> <br>
+            </div>
+        
+        
+                    <div class="DB_element">
+                        <br> <br>
+                        <div class="element_name"> pay the Bill on</div>
+                        <div class="element_value"> 09 DEC 
+        
+                        </div>
+                        <br> <br>
+                    </div>
+        
+                    </div><br> <br>
+                    <div class="DB_topMenu">
+                    <div class="DB_element">
+                        <br> <br>
+                        <div class="element_name"> Total Amount</div>
+                        <div class="element_value"><div id="wt_data"></div> <label>₹ </label>
+        
+                        </div>
+                        <br> <br>
+                    </div>
+        
+                    <div class="DB_element">
+                        <br> <br>
+                        <div class="element_name"> Increase
+                            by</diV>
+                        <div class="element_value">33.93 <label>%</label>
+        
+                        </div>
+                        <br> <br>
+                    </div>
+                
+        
+                </div><br> <br>
+   
+           <div class="bottom_bars">
+            <div class="service_list">
+       
+          
+            </div>
+            <div class="pay_btn">
+                Pay Now
+            </div>
+     </div>
+    </div>
+</div>
+
+
+
+<!-- ------------------------------------------------------------------------------- Gas part ----------------------------------------------------------------------------->
+<div id="Gas_page">
+<div class="dashboard">
+      
+                  <h4>
+                  Gas - Dashboard
+                  </h4>
+      
+                  <div class="DB_Analy">
+                     
+
+                    <canvas id="myChart3" ></canvas>
+                    
+                    <script>
+                     var xValues = [100,200,300,400,500,600,700,800,900,1000];
+                     
+                     new Chart("myChart3", {
+                       type: "line",
+                       data: {
+                         labels: xValues,
+                         datasets: [{ 
+                           data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
+                           borderColor: "rgb(0, 247, 255)",
+                           fill: false
+                         }]
+                       },
+                       options: {
+                         legend: {display: false}
+                       }
+                     });
+                     </script>
+
+                </div>
+      
+      
+             <div class="DB_topMenu">
+      
+              <div class="DB_element">
+                  <br> <br>
+                  <div class="element_name"> Last Update on</div>
+                  <div class="element_value"> <div id="g_data"></div> <label>Unit per sec</label>
+                  <script>
+                    var total_bill2 =10;
+                    var database = firebase.database()
+                    var user_ref =database.ref('user/')
+                    user_ref.on('value',function(snapshot){
+                      var data2 = snapshot.val()
+                      var unit= data2.Gas_meter;
+                      document.getElementById("g_data").innerHTML =unit;
+                      total_bill2= total_bill2 +(unit*4);
+                     
+                                    document.getElementById("gt_data").innerHTML =total_bill2;
+                                    document.getElementById("gtt_data").innerHTML =total_bill2;
+                    })
+                    </script>
+        
+          
+                  </div>
+                  <br> <br>
+              </div>
+          
+          
+                      <div class="DB_element">
+                          <br> <br>
+                          <div class="element_name"> play the Bill on</div>
+                          <div class="element_value"> 09 DEC 
+          
+                          </div>
+                          <br> <br>
+                      </div>
+          
+                      </div><br> <br>
+                      <div class="DB_topMenu">
+                      <div class="DB_element">
+                          <br> <br>
+                          <div class="element_name"> Total Amount</div>
+                          <div class="element_value"> <div id="gt_data"></div>  <label>₹ </label>
+          
+                          </div>
+                          <br> <br>
+                      </div>
+          
+                      <div class="DB_element">
+                          <br> <br>
+                          <div class="element_name"> Increase
+                              by</diV>
+                          <div class="element_value">33.93 <label>%</label>
+          
+                          </div>
+                          <br> <br>
+                      </div>
+                  
+          
+                  </div><br> <br>
+    
+             <div class="bottom_bars">
+              <div class="service_list">
+          
+                    
+            
+              </div>
+              <div class="pay_btn">
+                  Pay Now
+              </div>
+       </div>
+      </div>
+</div>
+
+
+ </div>
+</body>
+</html>

@@ -1,0 +1,143 @@
+.body{
+    width: 100%;
+    height: auto;
+    background-color: #10101d;
+
+}
+.login_page{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    padding: 55px 55px 55px 55px;
+    background-color: #10101d;
+ 
+}
+.lg_top{
+    width: 25%;
+    height: auto;
+    margin: auto;
+}
+.lg_top img{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    margin-bottom: 65px;
+    align-self: center;
+    justify-content: center;
+    padding: 10px 10px 10px 10px ;
+
+}
+
+.lg_input{
+width: 40%;
+height: auto;
+margin: auto;
+}
+.lg_input input{
+    width: 100%;
+    height:auto;
+    border-radius:8px ;
+    margin: auto;
+    text-decoration: rgb(255, 255, 255);
+    color: white;
+    padding: 10px 10px 10px 10px;
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+    margin-bottom: 25px;
+    border-style: solid;
+    border-color: turquoise;
+}
+.lg_bntlg{
+    width: 25%;
+    height: auto;
+    margin: auto;
+    text-align: center;
+    color: white;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 8px 8px 8px 8px;
+    border-color: white;
+    background: #26E2B3;
+    cursor: pointer;
+
+}
+.lg_btngl{
+    width: 75px;
+    height: auto;
+    margin: auto;
+    text-align: center;
+    color: white;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 8px 8px 8px 8px;
+    border-color: white;
+    background: #26E2B3;
+    cursor: pointer;
+}
+
+h6{
+    color: white;
+    font-size: large;
+    text-align: center;
+    margin-top:5px ;
+    margin-bottom: 5px;
+}
+
+
+.pay_btn{
+    width: 90%;
+    height: auto;
+    margin: auto;
+    text-align: center;
+    color: white;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 8px 8px 8px 8px;
+    text-align: center;
+  box-shadow: floralwhite;
+    background: #26E2B3;
+    cursor: pointer;
+
+}
+
+
+@media only screen and (max-width: 980px) {
+    body {
+      background-color: lightblue;
+    }
+    .login_page{
+    width: 75%;
+    padding: 10px 10px 10px 10px;
+    height: auto;
+    }
+
+
+
+
+
+  }
+
+  .myChart{
+    width:70%;
+ height: 200px;  
+ padding: 45px 45px 45px 45px;
+ margin: auto;
+}
+.myChart1{
+width:70%;
+height: 200px;  
+padding: 45px 45px 45px 45px;
+margin: auto;
+}
+.myChart2{
+width:70%;
+height: 200px;  
+padding: 45px 45px 45px 45px;
+margin: auto;
+}
+.myChar3{
+width:70%;
+height: 200px;  
+padding: 45px 45px 45px 45px;
+margin: auto;
+}

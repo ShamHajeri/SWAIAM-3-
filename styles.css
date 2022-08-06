@@ -1,0 +1,261 @@
+html{
+    width: 100%;
+    height: auto;
+    /* background: url(./img/Frame\ 4.png); */
+    margin: auto;
+   
+
+}
+body{
+    width: 100%;
+    height: auto;
+    padding: 0p 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #10101d;
+}
+
+.body_top{
+
+    font-family: 'Quicksand', sans-serif;
+font-family: 'Roboto', sans-serif;
+}
+
+
+
+
+
+
+.dashboard{
+    width: 80%;
+    height: auto;
+    padding: 10px 10px 10px 10px;
+    margin: auto;
+   
+    background-color: #10101d;
+    padding: 25px 25px 25px 25px;
+    border-radius:15px ;
+    
+}
+h4{
+    font-size: 28px;
+    
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+    color:#26E2B3  ;
+    margin: auto;
+    margin-bottom: 25px;
+   
+    
+}
+.DB_topMenu{
+    width: 100%;
+    height: auto;
+    display: flex;
+  
+    
+
+}
+
+.DB_element{
+    width: 20%;
+    height: auto;
+    background-color: #292929;
+    text-align: center;
+    margin: auto;
+    padding: 25px 25px 25px 25px;
+    border: 3px solid #00ffd980;
+    border-radius:15px;
+
+}
+.element_name{
+    margin: auto;
+    color: white;
+    font-size: 14px;
+    
+}
+.element_value{
+    width: 100%;
+    height: auto;
+    color: white;
+    display: inline;
+    font-size: 24px;
+    padding: 5px 5px 5px 5px;
+}
+.element_value label{
+    padding: 0px 0px 0px 0px;
+    margin: 0px;
+    font-size: 12px;
+}
+
+.DB_Analy img{
+
+    width: 100%;
+    height: auto;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 45px;
+   
+}
+
+
+
+.service_list{
+    width: 100%;
+    height: 150px;
+    margin: auto;
+    display:flex;
+    border-radius: 15px;
+    margin-bottom: 45px;
+    background-color: #0b0b14;
+    cursor: pointer;
+}
+
+.sl_left{
+    width: 10%;
+    height:  150px;
+    margin: auto;
+    margin-left: 0px;
+    background-color: black;
+    border-radius: 15px;
+ }
+
+.sl_left_img{
+    width: 45px;
+    height: 100%;
+    margin: auto;
+     padding: auto;
+}
+
+.sl_left_img img{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    margin-top: 25px;
+}
+.sl_mid{
+    width: 75%;
+    height: auto;
+    margin-top: 15px;
+    display: flex;
+
+}
+.sl_mid label{
+    color: blanchedalmond;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 30px 30px 30px 30px;
+
+
+}
+.sl_mid_name{
+    color: blanchedalmond;
+    text-align: center;
+    margin: auto;
+}
+.sl_right{
+    width: 200px;
+    height:  150px;
+    color: blanchedalmond;
+    text-align: center;
+    background: url(./img/bottom_pri_part.png);
+    border-radius: 15px;
+ 
+}
+.sl_right h3{
+    margin-top: 55px;
+ 
+ 
+    
+}
+
+
+
+#Login_page{
+    width: 100%;
+    height: auto;
+}
+ #Dashboard_page{
+     width: 100%;
+     height: auto;
+ }
+
+
+
+
+
+
+ .myChart{
+                          width:70%;
+                       height: 200px;  
+                       padding: 45px 45px 45px 45px;
+                       margin: auto;
+ }
+ .myChart1{
+    width:70%;
+ height: 200px;  
+ padding: 45px 45px 45px 45px;
+ margin: auto;
+}
+.myChart2{
+    width:70%;
+ height: 200px;  
+ padding: 45px 45px 45px 45px;
+ margin: auto;
+}
+.myChar3{
+    width:70%;
+ height: 200px;  
+ padding: 45px 45px 45px 45px;
+ margin: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.deatils_list{
+    width: 85%;
+    height: auto;
+    padding: 15px 15px 15px 15px;
+    margin: auto;
+    background-color: rgb(27, 27, 27);
+    border-radius: 15px;
+    text-align: center;
+    justify-content: center;
+    color: blanchedalmond;
+}
+.deatils_list label{
+    color: rgb(0, 247, 255);
+    font-size: 26px;
+    padding: 10px 10px 10px 10px;
+}
+.pay_btn{
+    width: 65%;
+    height: auto;
+    margin: auto;
+    background-color: rgb(0, 247, 255);
+    color: cornsilk;
+    font-size: larger;
+    padding: 25px 25px 25px 25px;
+     border-radius: 15px;
+}
+
+
+
+
+
+
